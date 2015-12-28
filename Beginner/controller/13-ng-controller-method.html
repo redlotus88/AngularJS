@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>	
+	<div ng-app="myApp" ng-controller="personControl">
+		Ãû£º<input type="text" ng-model="firstName"><br>
+		ÐÕ£º<input type="text" ng-model="lastName"><br>
+		<br>
+		ÐÕÃû£º {{ fullName() }}
+	</div>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('personControl', function($scope) {
+			$scope.firstName = "John";
+			$scope.lastName = "Doe";
+			$scope.fullName = function() {
+				return $scope.firstName + " " + $scope.lastName;
+			}
+		});
+	</script>
+
+</body>
+</html>

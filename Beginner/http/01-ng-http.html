@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>	
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<ul>
+			<li ng-repeat="x in names">
+				{{ x.Name + ', ' + x.Country}}
+			</li>
+		</ul>
+	</div>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http){
+			// 存在跨域请求问题，注意在访问其他网站页面的php时，可能得不到数据.
+			var objectJSON = $http.get("Customers_JSON.php")
+			.success(function (response) {
+				$scope.names = response.records;
+			});
+		});
+	</script>
+</body>
+</html>
